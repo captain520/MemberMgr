@@ -1,0 +1,154 @@
+//
+//  PrefixHeader.pch
+//  V44Demo
+//
+//  Created by wangzhangchuan on 2018/1/8.
+//  Copyright © 2018年 wangzhangchuan. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define RUN_EVN     1       //  0:Test   1:Product
+
+#if RUN_EVN
+#define DOMAIN_ADDRESS      @"http://api.leshouzhan.com/"
+#else
+#define DOMAIN_ADDRESS     @"http://apitest.leshouzhan.com/"
+#endif
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#import <Masonry.h>
+#import <AFNetworking.h>
+#import <MJRefresh.h>
+#import <MJExtension.h>
+#import "UIColor+category.h"
+#import "API.h"
+#import <UIImageView+WebCache.h>
+#import <UIButton+WebCache.h>
+#import "Utils.h"
+#import "UIImage+Category.h"
+#import <ReactiveCocoa.h>
+#import "CPTextField.h"
+#import "CPSelectTextField.h"
+#import "CPButton.h"
+#import "CPCommonButtn.h"
+#import "CPBaseCell.h"
+#import "CPLabel.h"
+#import "UIView+Toast.h"
+#import "CPUserInfoModel.h"
+#import "CPBaseModel.h"
+#import "CocoaLumberjack.h"
+#import "CPError.h"
+#import "CPProgress.h"
+#import "CPRegistParam.h"
+#import "CPMemberQuoteManager.h"
+
+#import "ZCLabel.h"
+#import "ZCButton.h"
+
+#ifdef DEBUG
+
+static const int ddLogLevel = DDLogLevelInfo;
+
+#else
+
+static const int ddLogLevel = DDLogLevelError;
+
+#endif
+
+#define IS_MEMBER_ACCOUNT  ([CPUserInfoModel shareInstance].loginModel.Typeid == 6 || [CPUserInfoModel shareInstance].loginModel.Typeid == 7)
+#define IS_SUB_MEMBER_ACCOUNT  ([CPUserInfoModel shareInstance].loginModel.Typeid == 7)
+
+#define CPImageWithColr(x)  [UIImage imageWithColor:x]
+#define CPEnableColor       [UIImage imageWithColor:MainColor]
+#define CPEnableImage       CPImageWithColr(MainColor)//[UIImage imageWithColor:MainColor]
+#define CPDisableColor      [UIImage imageWithColor:C33]
+#define CPDisableImage      CPImageWithColr(C66)//[UIImage imageWithColor:C33]
+#define CPBoardColor        C99
+
+#define CPFont(x)           [UIFont systemFontOfSize:x]
+#define CPFont_XL           (CPFont(17))
+#define CPFont_L            (CPFont(15))
+#define CPFont_M            (CPFont(13))
+#define CPFont_S            (CPFont(11))
+
+#define SCREENWIDTH         ([UIScreen mainScreen].bounds.size.width)
+#define SCREENHEIGHT        ([UIScreen mainScreen].bounds.size.height)
+#define STATUSBAR_HEIGHT   ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define SPACE_OFFSET_F      (16)
+
+#define CPImage(x)          [UIImage imageNamed:x]
+#define CPUrl(x)            [NSURL URLWithString:x]
+#define CPImagePath(x)      [NSString stringWithFormat:@"http://oss1.iviov.com/images/%@",x]
+#define CPImageURL(x)       CPUrl(CPImagePath(x))
+#define cellSpaceOffset      16
+#define CELL_HEIGHT_F       (44.0f)
+
+#define CPBoardWidth        (0.5f)
+#define CPBASETAG           (9527)
+
+#define NAV_HEIGHT   (44.0f + [UIApplication sharedApplication].statusBarFrame.size.height)
+#define CPStatusBarHeight   ([UIApplication sharedApplication].statusBarFrame.size.height)
+
+
+
+#define Color(R, G, B, A) [UIColor colorWithRed:(R)/255.0 green:(G)/255.0 blue:(B)/255.0 alpha:(A)]
+
+#define randomColor Color(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1)
+
+/**
+ *  主色调
+ */
+//#define mainColor0 Color(3,169,244,1.0)
+//#define mainColor1 Color(251, 113, 77, 1)
+
+#define MainColor      Color(80,200,240,1.0)
+#define CELL_BG_COLOR   Color(80,200,240,0.2)
+#define BorderColor    MainColor
+#define BgColor         Color(248,248,248,1.0)
+
+#define OIL_COLOR_4_90         ([UIColor  colorWithHexString:@"#f38814"])
+#define OIL_COLOR_4_93         ([UIColor  colorWithHexString:@"#f2df1c"])
+#define OIL_COLOR_4_97         ([UIColor  colorWithHexString:@"#1468f3"])
+#define OIL_COLOR_4_00         ([UIColor  colorWithHexString:@"#eb0b56"])
+
+#define HEXCOLOR(x)            (([UIColor colorWithHexString:x]))
+
+#define OIL_COLOR_4_90         ([UIColor  colorWithHexString:@"#f38814"])
+#define OIL_COLOR_4_93         ([UIColor  colorWithHexString:@"#f2df1c"])
+#define OIL_COLOR_4_97         ([UIColor  colorWithHexString:@"#1468f3"])
+#define OIL_COLOR_4_00         ([UIColor  colorWithHexString:@"#eb0b56"])
+
+#define HEXCOLOR(x)            (([UIColor colorWithHexString:x]))
+
+#define C33                      (HEXCOLOR(@"#333333"))
+#define C66                      (HEXCOLOR(@"#666666"))
+#define C99                      (HEXCOLOR(@"#999999"))
+#define Ccc                      (HEXCOLOR(@"#cccccc"))
+#define C00                      (HEXCOLOR(@"#000000"))
+#define Cff                      (HEXCOLOR(@"#ffffff"))
+#define UnselectedGray           (HEXCOLOR(@"#fdc7ba"))
+#define FONT_GREEN               (HEXCOLOR(@"#00a055"))
+#define FONT_YELLOW              (HEXCOLOR(@"#fdef6d"))
+#define CPWARNING_COLOR          (UIColor.redColor)
+#define CPERROR_COLOR            (UIColor.redColor)
+
+
+#define BUTTON_COLOR_NORMAL      (HEXCOLOR(@"#fb714d"))
+#define BUTTON_COLOR_HIGHLIGHTED (HEXCOLOR(@"#fb644d"))
+#define BUTTON_COLOR_BLUE        (HEXCOLOR(@"#2a79ec"))
+
+#define IS_LOGINED                ([CPUserInfoModel shareInstance].isLogined)
+#define IS_SHOP                   ([CPUserInfoModel shareInstance].isShop == YES)
+#define IS_ASSISTANT              ([CPUserInfoModel shareInstance].isShop == NO)
+
+#ifdef DEBUG
+//#define NSLog(format, ...) printf("[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#define NSLog(format, ...)
+#else
+#define NSLog(format, ...)
+#endif
+
+#endif /* PrefixHeader_pch */

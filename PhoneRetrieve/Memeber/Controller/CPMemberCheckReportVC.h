@@ -1,0 +1,15 @@
+//
+//  CPMemberCheckReportVC.h
+//  PhoneRetrieve
+//
+//  Created by 王璋传 on 2018/7/11.
+//  Copyright © 2018年 Captain. All rights reserved.
+//
+
+#import "CPBaseTableVC.h"
+
+@interface CPMemberCheckReportVC : CPBaseTableVC
+
+@property (nonatomic, copy) NSString *resultid;
+
+@end
