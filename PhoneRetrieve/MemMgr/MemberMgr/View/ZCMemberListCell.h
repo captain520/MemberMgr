@@ -7,7 +7,10 @@
 //
 
 #import "ZCTableViewCell.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface ZCMemberListCell : ZCTableViewCell
+
+@property (nonatomic, strong) DLData *model;
 
 @end

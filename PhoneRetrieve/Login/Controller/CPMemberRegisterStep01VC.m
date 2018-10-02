@@ -14,6 +14,9 @@
 #import "CPCheckBox.h"
 #import "CPWebVC.h"
 #import "ZCAddMemberSuccessVC.h"
+#import "ZCMemeberSearchVC.h"
+#import "ZCSearchDelegateListModel.h"
+#import "ZCAddMemeberResultModel.h"
 
 @interface CPMemberRegisterStep01VC ()<CPSelectTextFieldDelegat>
 
@@ -31,6 +34,8 @@
 @property (nonatomic, strong) CPCheckBox *checkBox;
 
 @property (nonatomic, assign) BOOL agreeProtocol;
+
+@property (nonatomic, strong) DLData *subDelegateModel;
 
 @end
 
@@ -330,15 +335,27 @@
         }
         
         
-        CPLabel *allotLB = [CPLabel new];
-        allotLB.text = @"分配";
-        allotLB.textAlignment = NSTextAlignmentCenter;
-        [cell.contentView addSubview:allotLB];
-        [allotLB mas_makeConstraints:^(MASConstraintMaker *make) {
+//        CPLabel *allotBT = [CPLabel new];
+//        allotBT.text = @"分配";
+//        allotBT.textAlignment = NSTextAlignmentCenter;
+//        [cell.contentView addSubview:allotBT];
+//        [allotBT mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(self.bankAccountTF.mas_bottom).offset(SPACE_OFFSET_F);
+//            make.left.mas_equalTo(SPACE_OFFSET_F);
+////            make.right.mas_equalTo(-SPACE_OFFSET_F);
+//            make.width.mas_equalTo(30);
+//            make.height.mas_equalTo(CELL_HEIGHT_F);
+//        }];
+        
+        CPButton *allotBT = [CPButton new];
+
+        [cell.contentView addSubview:allotBT];
+        [allotBT addTarget:self action:@selector(alloctAction:) forControlEvents:64];
+        [allotBT setTitle:@"分配" forState:0];
+        [allotBT mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.bankAccountTF.mas_bottom).offset(SPACE_OFFSET_F);
             make.left.mas_equalTo(SPACE_OFFSET_F);
-//            make.right.mas_equalTo(-SPACE_OFFSET_F);
-            make.width.mas_equalTo(30);
+            make.width.mas_equalTo(50);
             make.height.mas_equalTo(CELL_HEIGHT_F);
         }];
         
@@ -348,8 +365,8 @@
             
             [cell.contentView addSubview:self.subDelegateTF];
             [self.subDelegateTF mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.mas_equalTo(allotLB.mas_top);
-                make.left.mas_equalTo(allotLB.mas_right).offset(SPACE_OFFSET_F/2);
+                make.top.mas_equalTo(allotBT.mas_top);
+                make.left.mas_equalTo(allotBT.mas_right).offset(SPACE_OFFSET_F/2);
                 make.right.mas_equalTo(-SPACE_OFFSET_F);
                 make.height.mas_equalTo(CELL_HEIGHT_F);
             }];
@@ -594,11 +611,11 @@
                                );
 }
 
--(void)nextAction:(id)sender {
-    
-    ZCAddMemberSuccessVC *vc = [ZCAddMemberSuccessVC new];
-    [self.navigationController pushViewController:vc animated:YES];
-
+//-(void)nextAction:(id)sender {
+//
+//    ZCAddMemberSuccessVC *vc = [ZCAddMemberSuccessVC new];
+//    [self.navigationController pushViewController:vc animated:YES];
+//
 //    NSMutableDictionary *params = @{
 //                                   @"phone" : [CPRegistParam shareInstance].phone,
 //                                   @"sms" : [CPRegistParam shareInstance].sms,
@@ -629,7 +646,7 @@
 //                            } fail:^(CPError *error) {
 //
 //                            }];
-}
+//}
 
 - (void)handleRegistActionBlock:(id)result {
     [self.view makeToast:@"注册已完成，请静待审核！！！" duration:2.0f position:CSToastPositionCenter title:nil image:nil style:nil completion:^(BOOL didTap) {
@@ -662,6 +679,63 @@
                                self.agreeProtocol == YES
                                );
 }
+
+
+-(void)nextAction:(id)sender {
+    DDLogInfo(@"%s",__FUNCTION__);
+    NSMutableDictionary *params = @{
+                                    @"currentuserid" : @([CPUserInfoModel shareInstance].userDetaiInfoModel.ID),
+                                    @"linkname" : self.memeberNameTF.text,
+                                    @"phone" : self.memeberPhoneTF.text,
+                                    @"provinceid" : self.proviceModel.Code,
+                                    @"cityid" : self.cityModel.Code,
+                                    @"districtid" : self.areaModel.Code,
+                                    @"address" : self.addressTF.text,
+                                    @"idcard1url" : self.IDFrontBT.imageUrl,
+                                    @"idcard2url" : self.IDBackBT.imageUrl,
+                                    @"bname" : self.bankAccontNameTF.text,
+                                    @"bankname" : self.bankSelecteTF.text,
+                                    @"banknum" : self.bankAccountTF.text,
+                                    @"belonguserid" : @(self.subDelegateModel.ID),
+                                    }.mutableCopy;
+    if (self.businessLicenseBT.imageUrl) {
+        [params setObject:self.businessLicenseBT.imageUrl forKey:@"licenseurl"];
+    }
     
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCAddMemeberResultModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/createHY"
+                       parameters:params
+                            block:^(ZCAddMemeberResultModel *result) {
+                                [weakSelf handldNextActionSuccessBlock:result];
+                            } fail:^(CPError * _Nonnull error) {
+                                
+                            }];
+}
+
+- (void)handldNextActionSuccessBlock:(ZCAddMemeberResultModel *)result {
+    
+    ZCAddMemberSuccessVC *vc = [ZCAddMemberSuccessVC new];
+    vc.model = result;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)alloctAction:(id)sender {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    ZCMemeberSearchVC *vc = [ZCMemeberSearchVC new];
+    vc.selectModel = ^(DLData *model) {
+        [weakSelf handleAllocActionBlock:model];
+    };
+
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)handleAllocActionBlock:(DLData *)result {
+    self.subDelegateModel = result;
+    self.subDelegateTF.text = result.linkname ? result.linkname : result.companyname;
+}
 
 @end

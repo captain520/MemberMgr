@@ -7,7 +7,10 @@
 //
 
 #import "ZCBaseSearchVC.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface ZCMemeberSearchVC : ZCBaseSearchVC
+
+@property (nonatomic, copy) void (^selectModel)(DLData *model);
 
 @end

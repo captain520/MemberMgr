@@ -40,7 +40,7 @@
     }];
     
     self.memberCodeLB = [CPLabel new];
-    self.memberCodeLB.text = @"会员编号：HY1231230";
+    self.memberCodeLB.text = [NSString stringWithFormat:@"会员编号：%@",@(self.model.Code)];
 //    self.memberCodeLB.attributedText = [self attrFromStr:@"会员编号:" dest:@"HY12344523" color:MainColor];
     
     [self.view addSubview:self.memberCodeLB];
@@ -51,7 +51,7 @@
     }];
     
     self.membPasswdLB = [CPLabel new];
-    self.membPasswdLB.text = @"初始密码：1231230";
+    self.membPasswdLB.text = @"初始密码：123456";
 //    self.membPasswdLB.attributedText = [self attrFromStr:@"初始密码:" dest:@"1231230" color:UIColor.redColor];
     
     

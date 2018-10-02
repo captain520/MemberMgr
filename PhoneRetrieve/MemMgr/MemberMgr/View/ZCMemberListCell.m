@@ -23,7 +23,13 @@
     // Configure the view for the selected state
 }
 
-
+- (void)setModel:(DLData *)model {
+    _model = model;
+    
+    codeLB.text = [NSString stringWithFormat:@"会员编码:%@",_model.code];
+    nameLB.text = [NSString stringWithFormat:@"会员名称:%@",_model.linkname];
+    phoneLB.text = [NSString stringWithFormat:@"联系电话:%@",_model.phone];
+}
 
 - (void)setupUI {
     

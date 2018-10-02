@@ -178,6 +178,8 @@
 		9C1CBD612085881200CFC722 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD602085881200CFC722 /* libz.tbd */; };
 		9C1CBD632085882A00CFC722 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1CBD622085882A00CFC722 /* UserNotifications.framework */; };
 		9C22DABD2150CC8900D9F29B /* ZCUnlockMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22DABC2150CC8900D9F29B /* ZCUnlockMemberVC.m */; };
+		9C27F27A215E303500D92943 /* ZCAddMemeberResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27F278215E303400D92943 /* ZCAddMemeberResultModel.m */; };
+		9C27F27D2160752000D92943 /* ZCUserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27F27B2160752000D92943 /* ZCUserDetailModel.m */; };
 		9C2DE68E205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE68F205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE692205B576E005C0F26 /* CPFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE691205B576E005C0F26 /* CPFlowVC.m */; };
@@ -319,6 +321,8 @@
 		9C9C74A62028247300B1CF66 /* CPCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C74A52028247300B1CF66 /* CPCheckBox.m */; };
 		9C9C74AC2028460000B1CF66 /* CPSelectTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C74AB2028460000B1CF66 /* CPSelectTextField.m */; };
 		9C9C74AF2028527400B1CF66 /* CPShopRegistInfoTBVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9C74AE2028527400B1CF66 /* CPShopRegistInfoTBVC.m */; };
+		9C9E9F20215DCCBE00B280C2 /* ZCBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E9F1F215DCCBE00B280C2 /* ZCBaseModel.m */; };
+		9C9E9F4C215DCF0E00B280C2 /* ZCSearchDelegateListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9E9F4B215DCF0E00B280C2 /* ZCSearchDelegateListModel.m */; };
 		9C9ED91B202A95A000532826 /* CPShopHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED91A202A95A000532826 /* CPShopHelpVC.m */; };
 		9C9ED91E202A9C4700532826 /* CPShopHelpHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED91D202A9C4700532826 /* CPShopHelpHeader.m */; };
 		9C9ED921202AA0D500532826 /* CPImageLeftRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C9ED920202AA0D500532826 /* CPImageLeftRightCell.m */; };
@@ -655,6 +659,10 @@
 		9C1CBD642085883900CFC722 /* PhoneRetrieve.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoneRetrieve.entitlements; sourceTree = "<group>"; };
 		9C22DABB2150CC8900D9F29B /* ZCUnlockMemberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCUnlockMemberVC.h; sourceTree = "<group>"; };
 		9C22DABC2150CC8900D9F29B /* ZCUnlockMemberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCUnlockMemberVC.m; sourceTree = "<group>"; };
+		9C27F278215E303400D92943 /* ZCAddMemeberResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCAddMemeberResultModel.m; sourceTree = "<group>"; };
+		9C27F279215E303400D92943 /* ZCAddMemeberResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAddMemeberResultModel.h; sourceTree = "<group>"; };
+		9C27F27B2160752000D92943 /* ZCUserDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUserDetailModel.m; sourceTree = "<group>"; };
+		9C27F27C2160752000D92943 /* ZCUserDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUserDetailModel.h; sourceTree = "<group>"; };
 		9C2DE68C205B529F005C0F26 /* CPFlowModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowModel.h; sourceTree = "<group>"; };
 		9C2DE68D205B529F005C0F26 /* CPFlowModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPFlowModel.m; sourceTree = "<group>"; };
 		9C2DE690205B576E005C0F26 /* CPFlowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowVC.h; sourceTree = "<group>"; };
@@ -896,6 +904,10 @@
 		9C9C74AB2028460000B1CF66 /* CPSelectTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPSelectTextField.m; sourceTree = "<group>"; };
 		9C9C74AD2028527400B1CF66 /* CPShopRegistInfoTBVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopRegistInfoTBVC.h; sourceTree = "<group>"; };
 		9C9C74AE2028527400B1CF66 /* CPShopRegistInfoTBVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopRegistInfoTBVC.m; sourceTree = "<group>"; };
+		9C9E9F1E215DCCBE00B280C2 /* ZCBaseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCBaseModel.h; sourceTree = "<group>"; };
+		9C9E9F1F215DCCBE00B280C2 /* ZCBaseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCBaseModel.m; sourceTree = "<group>"; };
+		9C9E9F4A215DCF0E00B280C2 /* ZCSearchDelegateListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCSearchDelegateListModel.h; sourceTree = "<group>"; };
+		9C9E9F4B215DCF0E00B280C2 /* ZCSearchDelegateListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCSearchDelegateListModel.m; sourceTree = "<group>"; };
 		9C9ED919202A95A000532826 /* CPShopHelpVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopHelpVC.h; sourceTree = "<group>"; };
 		9C9ED91A202A95A000532826 /* CPShopHelpVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopHelpVC.m; sourceTree = "<group>"; };
 		9C9ED91C202A9C4700532826 /* CPShopHelpHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopHelpHeader.h; sourceTree = "<group>"; };
@@ -1771,6 +1783,28 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		9C9E9F1D215DCCAA00B280C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C9E9F1E215DCCBE00B280C2 /* ZCBaseModel.h */,
+				9C9E9F1F215DCCBE00B280C2 /* ZCBaseModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9C9E9F49215DCEA500B280C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C27F27C2160752000D92943 /* ZCUserDetailModel.h */,
+				9C27F27B2160752000D92943 /* ZCUserDetailModel.m */,
+				9C27F279215E303400D92943 /* ZCAddMemeberResultModel.h */,
+				9C27F278215E303400D92943 /* ZCAddMemeberResultModel.m */,
+				9C9E9F4A215DCF0E00B280C2 /* ZCSearchDelegateListModel.h */,
+				9C9E9F4B215DCF0E00B280C2 /* ZCSearchDelegateListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9CA7ABB5208B43C200994DAC /* 帮助中心 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1901,8 +1935,8 @@
 		9CD11E6E214B88EE006071DF /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				9C9E9F1D215DCCAA00B280C2 /* Model */,
 				9CD11E6F214B88EE006071DF /* Controller */,
-				9CD11E76214B88EE006071DF /* Model */,
 				9CD11E77214B88EE006071DF /* View */,
 			);
 			path = Base;
@@ -1921,13 +1955,6 @@
 				9CEB2F72214F44EF00281C8E /* ZCBaseSearchVC.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9CD11E76214B88EE006071DF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9CD11E77214B88EE006071DF /* View */ = {
@@ -2047,8 +2074,8 @@
 		9CEB2F64214D081700281C8E /* MemberMgr */ = {
 			isa = PBXGroup;
 			children = (
+				9C9E9F49215DCEA500B280C2 /* Model */,
 				9CEB2F65214D081700281C8E /* Controller */,
-				9CEB2F66214D081700281C8E /* Model */,
 				9CEB2F67214D081700281C8E /* View */,
 			);
 			path = MemberMgr;
@@ -2075,13 +2102,6 @@
 				9CF72A672150DB75008525D4 /* ZCMemberDetailVC.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9CEB2F66214D081700281C8E /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9CEB2F67214D081700281C8E /* View */ = {
@@ -2374,6 +2394,7 @@
 				9C167FFC204950AB0017A525 /* CPLeftMiddleRightCell.m in Sources */,
 				9C0D95EE204E255600834B90 /* CPAssistantRegisterParam.m in Sources */,
 				9CD11EAA214B8A51006071DF /* ZCServiceListHeaderView.m in Sources */,
+				9C9E9F20215DCCBE00B280C2 /* ZCBaseModel.m in Sources */,
 				9C070342202404520080856C /* ViewController.m in Sources */,
 				9CCF20B22062600300E83936 /* CPGoodSearchResultVC.m in Sources */,
 				9CAB3975206AA55D005F4D5F /* CPShippingStateVC.m in Sources */,
@@ -2456,6 +2477,7 @@
 				9CE34D4E214C958400F0DA65 /* ZCSearchListVC.m in Sources */,
 				9C5E277A20244597003E32E7 /* CPTextField.m in Sources */,
 				9C57B06F20ECA0E2006104DB /* CPRecycleDesVC.m in Sources */,
+				9C9E9F4C215DCF0E00B280C2 /* ZCSearchDelegateListModel.m in Sources */,
 				9C37752B204586340001B961 /* CPRemittanceAccountListVC.m in Sources */,
 				9C16EAC5204D2781007BE6FE /* CPRegistParam.m in Sources */,
 				9C56A1A02043A840009838B8 /* CPSearchVC.m in Sources */,
@@ -2508,6 +2530,7 @@
 				9C5E274720240983003E32E7 /* CPLeftRightCell.m in Sources */,
 				9C5C8B8520297C940053C50B /* CPShopMainVC.m in Sources */,
 				9C5E274B20240983003E32E7 /* CPConnerButton.m in Sources */,
+				9C27F27D2160752000D92943 /* ZCUserDetailModel.m in Sources */,
 				9C07033F202404520080856C /* AppDelegate.m in Sources */,
 				9C57B02120EA0063006104DB /* CPMemeberOrderVC.m in Sources */,
 				9CD11E8B214B88EE006071DF /* ZCTableViewCell.m in Sources */,
@@ -2559,6 +2582,7 @@
 				9CD61BFF20673A4700CF863C /* CPShopResigterParams.m in Sources */,
 				9CD11E87214B88EE006071DF /* ZCRefreshTableVC.m in Sources */,
 				9C30049320EDB18A00F8C083 /* CPRecycleDesModel.m in Sources */,
+				9C27F27A215E303500D92943 /* ZCAddMemeberResultModel.m in Sources */,
 				9C4F8ECD206F79AA00873192 /* CPPayStateSearchResultVCViewController.m in Sources */,
 				9C57B07520ECB003006104DB /* CPMemberInfoVC.m in Sources */,
 				9CE59BDB20F8CA6C006F3139 /* CPCollectionViewLayout.m in Sources */,

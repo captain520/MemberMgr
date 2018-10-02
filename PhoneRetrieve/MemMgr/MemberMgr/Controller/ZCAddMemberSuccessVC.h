@@ -7,7 +7,10 @@
 //
 
 #import "ZCBaseVC.h"
+#import "ZCAddMemeberResultModel.h"
 
 @interface ZCAddMemberSuccessVC : ZCBaseVC
+
+@property (nonatomic, strong) ZCAddMemeberResultModel *model;
 
 @end

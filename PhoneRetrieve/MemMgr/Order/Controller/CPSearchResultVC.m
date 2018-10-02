@@ -8,6 +8,7 @@
 
 #import "CPSearchResultVC.h"
 #import "CPUserSearchResultCell.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface CPSearchResultVC ()
 
@@ -19,17 +20,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.dataArray = @[
-                       @[
-                           @"",
-                           @"",
-                           @"",
-                           @"",
-                           @"",
-                           @"",
-                           @"",
-                           ]
-                       ].mutableCopy;
+//    self.dataArray = @[
+//                       @[
+//                           @"",
+//                           @"",
+//                           @"",
+//                           @"",
+//                           @"",
+//                           @"",
+//                           @"",
+//                           ]
+//                       ].mutableCopy;
 
     [self loadData];
 }
@@ -54,6 +55,8 @@
     }
     
     cell.sortNum = indexPath.row;
+    DLData *model = self.dataArray[indexPath.section][indexPath.row];
+    cell.model = model;
 
     return cell;
 }
@@ -65,6 +68,8 @@
 #pragma mark - private method
 
 - (void)loadData {
+    self.dataTableView.mj_header = nil;
+    self.dataTableView.mj_footer = nil;
     [self.dataTableView reloadData];
 }
 

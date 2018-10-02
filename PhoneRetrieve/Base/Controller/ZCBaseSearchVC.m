@@ -94,6 +94,7 @@
 #pragma mark - private method
 - (void)handleDidSelectRowBlock:(NSInteger )row {
     DDLogInfo(@"%ld",row);
+    !self.selectedIndex ? : self.selectedIndex(row);
     [self.searchController setActive:NO];
 }
 

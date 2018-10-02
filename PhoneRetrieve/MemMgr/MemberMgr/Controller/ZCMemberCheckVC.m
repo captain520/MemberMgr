@@ -11,6 +11,7 @@
 #import "CPCheckBox.h"
 #import "CPWebVC.h"
 #import "ZCMemeberSearchVC.h"
+#import "ZCAddMemberSuccessVC.h"
 
 @interface ZCMemberCheckVC ()
 

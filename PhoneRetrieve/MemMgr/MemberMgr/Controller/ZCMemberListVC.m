@@ -11,8 +11,11 @@
 #import "ZCOrderSearchVC.h"
 #import "ZCMemeberSearchVC.h"
 #import "ZCMemberDetailVC.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface ZCMemberListVC ()
+
+@property (nonatomic, strong) ZCSearchDelegateListModel *model;
 
 @end
 
@@ -22,13 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    NSMutableArray *tempData = @[].mutableCopy;
-    for (NSInteger i = 0; i < 30; ++i) {
-        [tempData addObject:@"--"];
-    }
-    
-    self.dataArray = @[tempData].mutableCopy;
-    
     UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
 
     self.navigationItem.rightBarButtonItems = @[self.editButtonItem, searchItem];
@@ -70,11 +66,13 @@
     } else {
         cell.backgroundColor = UIColor.whiteColor;
     }
-
+    
+    cell.model = self.dataArray[indexPath.section][indexPath.row];
+    
     return cell;
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+cccc
     return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
 }
 
@@ -82,7 +80,10 @@
     if (tableView.isEditing == NO) {
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         
+        DLData *model = self.dataArray[indexPath.section][indexPath.row];
+        
         ZCMemberDetailVC *vc = [ZCMemberDetailVC new];
+        vc.userID = model.ID;
         
         [self.navigationController pushViewController:vc animated:YES];
     }
@@ -91,8 +92,40 @@
 }
 #pragma mark - private method
 - (void)loadData {
-    [self.dataTableView.mj_header endRefreshing];
-    [self.dataTableView.mj_footer endRefreshing];
+    
+    NSMutableDictionary *params = @{
+                                    @"currentuserid" : USER_ID,
+                                    @"typeid" : @(6),
+                                    @"currentusertypeid" : @([CPUserInfoModel shareInstance].loginModel.Typeid),
+                                    @"currentpage" : @(self.currentIndex),
+                                    @"pagesize" : @"10",
+                                    }.mutableCopy;
+    
+    __weak typeof(self) weakSelf = self;
+
+    [ZCSearchDelegateListModel modelRequestPageWith:DOMAIN_ADDRESS@"api/user/findUserPageList/findUserPageList"
+                                         parameters:params
+                                              block:^(ZCSearchDelegateListModel *result) {
+                                                  [weakSelf handleLoadDataBlock:result];
+                                              } fail:^(CPError * _Nonnull error) {
+                                                  
+                                              }];
+    
+}
+
+- (void)handleLoadDataBlock:(ZCSearchDelegateListModel *)result {
+    
+    if (result.hasNoData) {
+        [self.dataTableView.mj_header endRefreshing];
+        [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
+    }
+    
+    self.model = result;
+    
+    if (result.data && [result.data isKindOfClass:[NSArray class]]) {
+        self.dataArray = @[result.data].mutableCopy;
+        [self.dataTableView reloadData];
+    }
 }
 
 - (void)searchAction:(id)sender {

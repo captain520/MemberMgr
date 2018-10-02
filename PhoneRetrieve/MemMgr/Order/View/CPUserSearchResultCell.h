@@ -7,9 +7,12 @@
 //
 
 #import "ZCTableViewCell.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface CPUserSearchResultCell : ZCTableViewCell
 
 @property (nonatomic,assign) NSInteger sortNum;
+
+@property (nonatomic, strong) DLData *model;
 
 @end

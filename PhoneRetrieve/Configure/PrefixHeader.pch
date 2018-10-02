@@ -9,7 +9,7 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#define RUN_EVN     1       //  0:Test   1:Product
+#define RUN_EVN     0       //  0:Test   1:Product
 
 #if RUN_EVN
 #define DOMAIN_ADDRESS      @"http://api.leshouzhan.com/"
@@ -150,5 +150,7 @@ static const int ddLogLevel = DDLogLevelError;
 #else
 #define NSLog(format, ...)
 #endif
+
+#define USER_ID  @([CPUserInfoModel shareInstance].userDetaiInfoModel.ID)
 
 #endif /* PrefixHeader_pch */

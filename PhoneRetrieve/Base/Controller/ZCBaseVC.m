@@ -19,6 +19,8 @@
     // Do any additional setup after loading the view.
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.backgroundColor = UIColor.whiteColor;
+    
+    DDLogInfo(@"__________  %@  __________",NSStringFromClass(self.class));
 }
 
 - (void)didReceiveMemoryWarning {

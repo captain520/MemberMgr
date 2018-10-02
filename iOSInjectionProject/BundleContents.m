@@ -3,7 +3,7 @@
 */
 
 #define INJECTION_NOIMPL
-#define INJECTION_BUNDLE InjectionBundle6
+#define INJECTION_BUNDLE InjectionBundle21
 
 #define INJECTION_ENABLED
 #import "/tmp/injectionforxcode/BundleInjection.h"
@@ -28,7 +28,7 @@ extern
 };
 #endif
 
-@implementation NSObject(InjectionBundle6)
+@implementation NSObject(InjectionBundle21)
 
 + (void)load {
     Class bundleInjection = NSClassFromString(@"BundleInjection");
@@ -42,8 +42,6 @@ int injectionHook() {
     [NSObject load];
     return YES;
 }
-
-#import "/Users/wangzhangchuan/Documents/GitHub/MemberManager/PhoneRetrieve/MemMgr/MemberMgr/Controller/ZCMemberCheckVC.m"
 
 
 

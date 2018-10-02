@@ -261,4 +261,21 @@ NSString  *cp_documentFilePath(NSString *fileName) {
     return [document stringByAppendingPathComponent:fileName];
 }
 
+BOOL cp_isNumber(NSString *strValue) {
+    
+    if (strValue == nil || [strValue length] <= 0)
+    {
+        return NO;
+    }
+    
+    NSCharacterSet *cs = [[NSCharacterSet characterSetWithCharactersInString:@"0123456789."] invertedSet];
+    NSString *filtered = [[strValue componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+    
+    if (![strValue isEqualToString:filtered])
+    {
+        return NO;
+    }
+    return YES;
+}
+
 @end

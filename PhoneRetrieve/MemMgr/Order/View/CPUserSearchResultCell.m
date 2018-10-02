@@ -37,7 +37,7 @@
     }];
     
     nameLB = [ZCLabel new];
-    nameLB.text = @"船长/15814099328";
+//    nameLB.text = @"船长/15814099328";
     [self.contentView addSubview:nameLB];
     [nameLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
@@ -46,7 +46,7 @@
     }];
     
     chargeNameLB = [ZCLabel new];
-    chargeNameLB.text = @"(负责人:厂长)";
+//    chargeNameLB.text = @"(负责人:厂长)";
     [self.contentView addSubview:chargeNameLB];
     [chargeNameLB mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.mas_equalTo(0);
@@ -59,6 +59,13 @@
     
     _sortNum = sortNum;
     sortLB.text = [NSString stringWithFormat:@"%02ld",(long)sortNum];
+}
+
+- (void)setModel:(DLData *)model {
+    _model = model;
+    
+    nameLB.text = [NSString stringWithFormat:@"%@/%@",model.linkname,model.phone];
+    chargeNameLB.text = [NSString stringWithFormat:@"(负责人:%@)",model.prelinkname];
 }
 
 @end

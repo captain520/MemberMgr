@@ -13,5 +13,6 @@
 
 @property (nonatomic,strong) UISearchController *searchController;
 @property (nonatomic, strong) CPSearchResultVC *resultVC;
+@property (nonatomic, copy) void (^selectedIndex)(NSInteger index);
 
 @end

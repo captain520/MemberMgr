@@ -66,4 +66,7 @@ NSString * cp_md5(NSString *input);
 NSString  *cp_documentFilePath(NSString *fileName);
 
 
+BOOL cp_isNumber(NSString *strValue);
+
+
 @end
