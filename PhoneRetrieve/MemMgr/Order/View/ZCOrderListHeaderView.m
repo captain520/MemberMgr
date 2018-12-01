@@ -58,7 +58,7 @@
     
     orderNOLB = [ZCLabel new];
     orderNOLB.font = [UIFont systemFontOfSize:13];
-    orderNOLB.text = @"订单号：123oiwqrisflls102939";
+//    orderNOLB.text = @"订单号：123oiwqrisflls102939";
     
     [self.contentView addSubview:orderNOLB];
     [orderNOLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -84,7 +84,9 @@
 - (void)setModel:(CPShopOrderDetailModel *)model {
     _model = model;
     
-    orderNOLB.text = model.ordersn;
+    orderNOLB.text = [NSString stringWithFormat:@"订单号: %@",model.ordersn];
+    memeberNameLB.text = [NSString stringWithFormat:@"会员: %@",model.doorname];
+    chargeNameLB.text = [NSString stringWithFormat:@"负责人: %@",model.shopname];
 }
 
 @end

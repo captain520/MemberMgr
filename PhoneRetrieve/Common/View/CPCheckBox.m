@@ -29,13 +29,13 @@
         checkIV = [UIButton new];
         checkIV.titleLabel.font = [UIFont systemFontOfSize:13.0f];
         checkIV.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-        [checkIV setImage:CPImage(@"selected") forState:UIControlStateSelected];
-        [checkIV setImage:CPImage(@"unselected") forState:UIControlStateNormal];
+//        [checkIV setImage:CPImage(@"selected") forState:UIControlStateSelected];
+        [checkIV setImage:CPImage(@"selected") forState:UIControlStateNormal];
 //        [checkIV setImage:CPImage(@"Tick_preseed") forState:UIControlStateSelected];
 //        [checkIV setImage:CPImage(@"Tick_default") forState:UIControlStateNormal];
         [checkIV setTitle:@" 同意" forState:0];
         [checkIV setTitleColor:C33 forState:0];
-        [checkIV addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+//        [checkIV addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
 
         [self addSubview:checkIV];
         

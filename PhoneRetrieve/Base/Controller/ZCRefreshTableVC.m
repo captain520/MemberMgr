@@ -19,6 +19,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.currentIndex = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,7 +59,7 @@
 }
 
 - (void)handleMJHeaderFreshBlock {
-    self.currentIndex = 0;
+    self.currentIndex = 1;
     
     [self loadData];
 }

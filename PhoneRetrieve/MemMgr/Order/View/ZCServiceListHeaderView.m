@@ -12,6 +12,15 @@
     ZCLabel *dateLB, *serviceFeeLB, *orderCountLB, *amountCountLB;
 }
 
+- (void)setModel:(DelegateFeeTotalprice *)model {
+    _model = model;
+    
+    dateLB.text = @"缺少字段";
+    serviceFeeLB.text = [NSString stringWithFormat:@"统计服务费:¥%ld",model.totalprice];
+    orderCountLB.text = [NSString stringWithFormat:@"交易机器数量:%ld",model.goodscount];
+    amountCountLB.text = [NSString stringWithFormat:@"交易金额:¥%ld",model.totalprice];
+}
+
 - (id)initWithReuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithReuseIdentifier:reuseIdentifier]) {
         [self setupUI];

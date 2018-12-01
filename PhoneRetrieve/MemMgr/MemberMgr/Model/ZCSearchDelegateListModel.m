@@ -13,9 +13,14 @@
     return @{@"Code" : @"code"};
 }
 
-- (BOOL)isHasNoData {
+//- (BOOL)isHasNoData {
+//    return self.currentpage * self.pagesize >= self.total;
+//}
+
+- (BOOL)hasNoData {
     return self.currentpage * self.pagesize >= self.total;
 }
+
 
 @end
 

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZCDelegateConsumModel.h"
 
 @interface ZCServiceListHeaderView : UITableViewHeaderFooterView
+
+@property (nonatomic,strong) DelegateFeeTotalprice *model;
 
 @end

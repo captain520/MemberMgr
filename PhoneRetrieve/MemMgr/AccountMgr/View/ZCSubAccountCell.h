@@ -7,11 +7,16 @@
 //
 
 #import "ZCTableViewCell.h"
+#import "ZCSearchDelegateListModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ZCSubAccountCell : ZCTableViewCell
 
+@property (nonatomic, strong) DLData *model;
+@property (nonatomic, copy) void (^checkInBlock)(DLData *model);
+@property (nonatomic, copy) void (^modifyBlock)(DLData *model);
+@property (nonatomic, copy) void (^deleteBlock)(DLData *model);
 @end
 
 NS_ASSUME_NONNULL_END

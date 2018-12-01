@@ -14,6 +14,14 @@
     ZCButton *checkBT;
 }
 
+- (void)setModel:(DLData *)model {
+    _model = model;
+    
+    codeLB.text = [NSString stringWithFormat:@"会员编码:%@",model.code];
+    nameLB.text = [NSString stringWithFormat:@"会员名称:%@",model.linkname];
+    phoneLB.text = [NSString stringWithFormat:@"联系电话:%@",model.phone];
+}
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code

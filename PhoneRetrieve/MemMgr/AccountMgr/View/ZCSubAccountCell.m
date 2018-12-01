@@ -43,7 +43,7 @@
     
     [self.contentView addSubview:checkBT];
     [checkBT setTitle:@"删除" forState:0];
-    [checkBT addTarget:self action:@selector(checkAction:) forControlEvents:64];
+    [checkBT addTarget:self action:@selector(deleteAction:) forControlEvents:64];
     [checkBT mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-7);
         make.right.mas_equalTo(-SPACE_OFFSET_F);
@@ -53,10 +53,10 @@
     
     modifyBT = [ZCButton new];
     modifyBT.tag = CPBASETAG + 1;
-    
+
     [self.contentView addSubview:modifyBT];
     [modifyBT setTitle:@"修改" forState:0];
-    [modifyBT addTarget:self action:@selector(checkAction:) forControlEvents:64];
+    [modifyBT addTarget:self action:@selector(modifyAction:) forControlEvents:64];
     [modifyBT mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-7);
         make.right.mas_equalTo(checkBT.mas_left).offset(-SPACE_OFFSET_F/2);
@@ -108,8 +108,26 @@
 }
 
 - (void)checkAction:(UIButton *)sender {
-    
     DDLogInfo(@"%s tag:%ld",__FUNCTION__,(long)sender.tag);
+    !self.checkInBlock ? : self.checkInBlock(self.model);
 }
+
+- (void)modifyAction:(id)sender {
+    !self.modifyBlock ? : self.modifyBlock(self.model);
+}
+
+- (void)deleteAction:(id)sender {
+    !self.deleteBlock ? : self.deleteBlock(self.model);
+}
+
+- (void)setModel:(DLData *)model {
+    _model = model;
+    
+    codeLB.text = [NSString stringWithFormat:@"子账号名称: %@",model.linkname];
+    nameLB.text = [NSString stringWithFormat:@"子账号编码: %@",model.code];
+    phoneLB.text = [NSString stringWithFormat:@"联系电话: %@",model.phone];
+}
+
+
 
 @end

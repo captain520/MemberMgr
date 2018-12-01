@@ -10,8 +10,12 @@
 #import "ZCSearchVC.h"
 #import "ZCServiceListHeaderView.h"
 #import "ZCServiceDetailCell.h"
+#import "ZCDelegateConsumModel.h"
 
 @interface ZCServiceInfoListVC ()
+
+
+@property (nonatomic, strong) ZCDelegateConsumModel *model;
 
 @end
 
@@ -20,15 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.dataArray = @[
-                       @[@"1111111",
-                       @"1111111",
-                       @"1111111",
-                       @"1111111",
-                       @"1111111",
-                       @"1111111"]
-                       ].mutableCopy;
+
+    [self setTitle:@"服务费信息"];
     
     [self loadData];
     
@@ -59,6 +56,8 @@
         cell = [[ZCServiceDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
+    cell.model = self.dataArray[indexPath.section][indexPath.row];
+    
     return cell;
 }
 
@@ -75,41 +74,84 @@
         header.contentView.backgroundColor = UIColor.whiteColor;
     }
     
+    header.model = self.model.totalprice;
+    
     return header;
 }
 
+- (NSString *)convertDate2StrFormat:(NSDate *)date {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    return [dateFormatter stringFromDate:date];
+}
 #pragma mark - private method implement
 - (void)loadData {
-    if (self.currentIndex == 0) {
-        self.dataArray = @[@[@"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111",
-                             @"1111111"]].mutableCopy;
-    } else {
-        [self.dataArray addObject:@[@"1111111",
-                                    @"1111111",
-                                    @"1111111",
-                                    @"1111111",
-                                    @"1111111",
-                                    @"1111111"]];
+    
+    NSString *endTime = [self convertDate2StrFormat:[NSDate date]];
+    NSString *startTime = [self convertDate2StrFormat:[NSDate dateWithTimeIntervalSinceNow:-3 * 24 * 60 * 60]];
+    
+    NSMutableDictionary *params = @{
+                                    @"agentid" : USER_ID,
+//                                    @"starttime" : startTime,
+//                                    @"endtime" : endTime,
+                                    @"starttime" : @"2018-09-29",
+                                    @"endtime" : @"2018-10-02",
+                                    @"currentpage" : @(self.currentIndex),
+                                    @"pagesize" : @"30",
+                                    }.mutableCopy;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCDelegateConsumModel modelRequestPageWith:DOMAIN_ADDRESS@"/api/Reportresultcommision/findPageList"
+                                     parameters:params
+                                          block:^(id  _Nonnull result) {
+                                              [weakSelf handleLoadDataSuccessBlock:result];
+                                          } fail:^(CPError * _Nonnull error) {
+                                              
+                                          }];
+}
+
+- (void)handleLoadDataSuccessBlock:(ZCDelegateConsumModel *)result {
+    
+    if (!result || ![result.data isKindOfClass:[NSArray class]] || result.data.count == 0) {
+        return;
     }
     
     [self.dataTableView.mj_header endRefreshing];
-    [self.dataTableView.mj_footer endRefreshing];
+    if (result.hasNoData) {
+        [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
+    } else {
+        [self.dataTableView.mj_footer endRefreshing];
+    }
+    
+    self.model = result;
+    
+    self.dataArray = @[result.data].mutableCopy;
     
     [self.dataTableView reloadData];
 }
 
 - (void)searchAction:(id)sender {
     
+    __weak typeof(self) weakSelf = self;
+    
     ZCSearchVC *searchVC = [ZCSearchVC new];
+    searchVC.loadDataBlock = ^(id data) {
+        [weakSelf handleSearchBlock:data];
+    };
     
     [self.navigationController pushViewController:searchVC animated:YES];
+}
+
+- (void)handleSearchBlock:(ZCDelegateConsumModel *)blockData{
+    
+    [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
+
+    self.model = blockData;
+    self.dataArray = @[blockData.data].mutableCopy;
+    
+    [self.dataTableView reloadData];
 }
 
 @end

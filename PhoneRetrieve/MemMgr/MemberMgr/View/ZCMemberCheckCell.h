@@ -7,9 +7,12 @@
 //
 
 #import "ZCTableViewCell.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface ZCMemberCheckCell : ZCTableViewCell
 
 @property (nonatomic, copy) void (^checkBlock)(void);
+
+@property (nonatomic, strong) DLData *model;
 
 @end

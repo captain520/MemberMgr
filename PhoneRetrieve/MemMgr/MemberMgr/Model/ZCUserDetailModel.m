@@ -5,6 +5,10 @@
 #import "ZCUserDetailModel.h"
 @implementation ZCUserDetailModel
 
++ (NSDictionary *)mj_replacedKeyFromPropertyName {
+    return @{@"ID" : @"id"};
+}
+
 @end
 
 @implementation Oldbankinfo

@@ -180,6 +180,7 @@
 		9C22DABD2150CC8900D9F29B /* ZCUnlockMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C22DABC2150CC8900D9F29B /* ZCUnlockMemberVC.m */; };
 		9C27F27A215E303500D92943 /* ZCAddMemeberResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27F278215E303400D92943 /* ZCAddMemeberResultModel.m */; };
 		9C27F27D2160752000D92943 /* ZCUserDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C27F27B2160752000D92943 /* ZCUserDetailModel.m */; };
+		9C2C63BA2175BBFD00847F84 /* ZCRegisterMemberSearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2C63B92175BBFC00847F84 /* ZCRegisterMemberSearchVC.m */; };
 		9C2DE68E205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE68F205B529F005C0F26 /* CPFlowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE68D205B529F005C0F26 /* CPFlowModel.m */; };
 		9C2DE692205B576E005C0F26 /* CPFlowVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C2DE691205B576E005C0F26 /* CPFlowVC.m */; };
@@ -310,6 +311,9 @@
 		9C5E27802024609C003E32E7 /* CPRegisterTypeListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E277F2024609C003E32E7 /* CPRegisterTypeListVC.m */; };
 		9C5E2783202462C1003E32E7 /* CPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E2782202462C1003E32E7 /* CPButton.m */; };
 		9C5E278620246A29003E32E7 /* CPShopRegistLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */; };
+		9C6490F6219E67AB002FE835 /* ZCRejectVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6490F5219E67AB002FE835 /* ZCRejectVC.m */; };
+		9C6490FA219E8CE3002FE835 /* MSRejectReasonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6490F8219E8CE2002FE835 /* MSRejectReasonModel.m */; };
+		9C6490FD219E8EF7002FE835 /* ZCRejectReasonCV.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6490FC219E8EF7002FE835 /* ZCRejectReasonCV.m */; };
 		9C699AFF208C951700CBE81D /* CPHelpDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */; };
 		9C6E6B24210336F800B30481 /* CPQuoteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6E6B23210336F800B30481 /* CPQuoteManager.m */; };
 		9C7F64AE204D0E170029B193 /* CPLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C7F64AD204D0E170029B193 /* CPLoginModel.m */; };
@@ -333,6 +337,9 @@
 		9CAB3975206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
 		9CAB3976206AA55D005F4D5F /* CPShippingStateVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */; };
 		9CBD340E2114459600D36470 /* CPUpdateVersionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CBD340D2114459600D36470 /* CPUpdateVersionModel.m */; };
+		9CC3A8292175DD2200CD5437 /* ZCCheckInMemberListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3A8282175DD2200CD5437 /* ZCCheckInMemberListVC.m */; };
+		9CC3A82C2175E00B00CD5437 /* ZCCheckInMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3A82B2175E00B00CD5437 /* ZCCheckInMemberCell.m */; };
+		9CC3A82F2175E56000CD5437 /* ZCAddMemberVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CC3A82E2175E56000CD5437 /* ZCAddMemberVC.m */; };
 		9CCE377B2046453F00DBF147 /* CPShopCartVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE377A2046453F00DBF147 /* CPShopCartVC.m */; };
 		9CCE377E204647BA00DBF147 /* CPOrderActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE377D204647BA00DBF147 /* CPOrderActionView.m */; };
 		9CCE378120464C9000DBF147 /* CPShopCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CCE378020464C9000DBF147 /* CPShopCartCell.m */; };
@@ -379,6 +386,7 @@
 		9CDD9302205F8E3A0072A6C1 /* CPAssistantOrderListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD9301205F8E3A0072A6C1 /* CPAssistantOrderListVC.m */; };
 		9CDD9305205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CDD9304205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m */; };
 		9CE34D4E214C958400F0DA65 /* ZCSearchListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE34D4D214C958400F0DA65 /* ZCSearchListVC.m */; };
+		9CE5707F2163697100176E4A /* ZCDelegateConsumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE5707E2163697100176E4A /* ZCDelegateConsumModel.m */; };
 		9CE59BDB20F8CA6C006F3139 /* CPCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BDA20F8CA6C006F3139 /* CPCollectionViewLayout.m */; };
 		9CE59BDE20F99042006F3139 /* CPMemberQuotePriceFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BDD20F99042006F3139 /* CPMemberQuotePriceFooter.m */; };
 		9CE59BE120F9A056006F3139 /* CPMemberCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CE59BE020F9A056006F3139 /* CPMemberCartCell.m */; };
@@ -663,6 +671,8 @@
 		9C27F279215E303400D92943 /* ZCAddMemeberResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCAddMemeberResultModel.h; sourceTree = "<group>"; };
 		9C27F27B2160752000D92943 /* ZCUserDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUserDetailModel.m; sourceTree = "<group>"; };
 		9C27F27C2160752000D92943 /* ZCUserDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUserDetailModel.h; sourceTree = "<group>"; };
+		9C2C63B82175BBFC00847F84 /* ZCRegisterMemberSearchVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCRegisterMemberSearchVC.h; sourceTree = "<group>"; };
+		9C2C63B92175BBFC00847F84 /* ZCRegisterMemberSearchVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCRegisterMemberSearchVC.m; sourceTree = "<group>"; };
 		9C2DE68C205B529F005C0F26 /* CPFlowModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowModel.h; sourceTree = "<group>"; };
 		9C2DE68D205B529F005C0F26 /* CPFlowModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPFlowModel.m; sourceTree = "<group>"; };
 		9C2DE690205B576E005C0F26 /* CPFlowVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPFlowVC.h; sourceTree = "<group>"; };
@@ -884,6 +894,12 @@
 		9C5E2782202462C1003E32E7 /* CPButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPButton.m; sourceTree = "<group>"; };
 		9C5E278420246A29003E32E7 /* CPShopRegistLoginVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopRegistLoginVC.h; sourceTree = "<group>"; };
 		9C5E278520246A29003E32E7 /* CPShopRegistLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopRegistLoginVC.m; sourceTree = "<group>"; };
+		9C6490F4219E67AB002FE835 /* ZCRejectVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCRejectVC.h; sourceTree = "<group>"; };
+		9C6490F5219E67AB002FE835 /* ZCRejectVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCRejectVC.m; sourceTree = "<group>"; };
+		9C6490F8219E8CE2002FE835 /* MSRejectReasonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSRejectReasonModel.m; sourceTree = "<group>"; };
+		9C6490F9219E8CE3002FE835 /* MSRejectReasonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSRejectReasonModel.h; sourceTree = "<group>"; };
+		9C6490FB219E8EF7002FE835 /* ZCRejectReasonCV.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCRejectReasonCV.h; sourceTree = "<group>"; };
+		9C6490FC219E8EF7002FE835 /* ZCRejectReasonCV.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCRejectReasonCV.m; sourceTree = "<group>"; };
 		9C699AFD208C951700CBE81D /* CPHelpDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPHelpDetailModel.h; sourceTree = "<group>"; };
 		9C699AFE208C951700CBE81D /* CPHelpDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPHelpDetailModel.m; sourceTree = "<group>"; };
 		9C6E6B22210336F800B30481 /* CPQuoteManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPQuoteManager.h; sourceTree = "<group>"; };
@@ -926,6 +942,12 @@
 		9CAB3974206AA55D005F4D5F /* CPShippingStateVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShippingStateVC.m; sourceTree = "<group>"; };
 		9CBD340C2114459600D36470 /* CPUpdateVersionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPUpdateVersionModel.h; sourceTree = "<group>"; };
 		9CBD340D2114459600D36470 /* CPUpdateVersionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPUpdateVersionModel.m; sourceTree = "<group>"; };
+		9CC3A8272175DD2200CD5437 /* ZCCheckInMemberListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCCheckInMemberListVC.h; sourceTree = "<group>"; };
+		9CC3A8282175DD2200CD5437 /* ZCCheckInMemberListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCCheckInMemberListVC.m; sourceTree = "<group>"; };
+		9CC3A82A2175E00B00CD5437 /* ZCCheckInMemberCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCCheckInMemberCell.h; sourceTree = "<group>"; };
+		9CC3A82B2175E00B00CD5437 /* ZCCheckInMemberCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCCheckInMemberCell.m; sourceTree = "<group>"; };
+		9CC3A82D2175E56000CD5437 /* ZCAddMemberVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCAddMemberVC.h; sourceTree = "<group>"; };
+		9CC3A82E2175E56000CD5437 /* ZCAddMemberVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCAddMemberVC.m; sourceTree = "<group>"; };
 		9CCE37792046453F00DBF147 /* CPShopCartVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPShopCartVC.h; sourceTree = "<group>"; };
 		9CCE377A2046453F00DBF147 /* CPShopCartVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPShopCartVC.m; sourceTree = "<group>"; };
 		9CCE377C204647BA00DBF147 /* CPOrderActionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPOrderActionView.h; sourceTree = "<group>"; };
@@ -1009,6 +1031,8 @@
 		9CDD9304205F937A0072A6C1 /* CPAssistanteOrderDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPAssistanteOrderDetailModel.m; sourceTree = "<group>"; };
 		9CE34D4C214C958400F0DA65 /* ZCSearchListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZCSearchListVC.h; sourceTree = "<group>"; };
 		9CE34D4D214C958400F0DA65 /* ZCSearchListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZCSearchListVC.m; sourceTree = "<group>"; };
+		9CE5707D2163697100176E4A /* ZCDelegateConsumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCDelegateConsumModel.h; sourceTree = "<group>"; };
+		9CE5707E2163697100176E4A /* ZCDelegateConsumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCDelegateConsumModel.m; sourceTree = "<group>"; };
 		9CE59BD920F8CA6C006F3139 /* CPCollectionViewLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPCollectionViewLayout.h; sourceTree = "<group>"; };
 		9CE59BDA20F8CA6C006F3139 /* CPCollectionViewLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPCollectionViewLayout.m; sourceTree = "<group>"; };
 		9CE59BDC20F99042006F3139 /* CPMemberQuotePriceFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CPMemberQuotePriceFooter.h; sourceTree = "<group>"; };
@@ -1783,6 +1807,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		9C6490F7219E8CD5002FE835 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9C6490F9219E8CE3002FE835 /* MSRejectReasonModel.h */,
+				9C6490F8219E8CE2002FE835 /* MSRejectReasonModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9C9E9F1D215DCCAA00B280C2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1902,25 +1935,11 @@
 		9CD11E67214B87F5006071DF /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9CD11E68214B87F5006071DF /* Controller */,
-				9CD11E69214B87F5006071DF /* Model */,
+				9CE5707B2163695E00176E4A /* Controller */,
+				9CE5707C2163695E00176E4A /* Model */,
 				9CD11E6A214B87F5006071DF /* View */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		9CD11E68214B87F5006071DF /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		9CD11E69214B87F5006071DF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9CD11E6A214B87F5006071DF /* View */ = {
@@ -1980,7 +1999,6 @@
 			isa = PBXGroup;
 			children = (
 				9CD11E8F214B8A51006071DF /* Controller */,
-				9CD11E98214B8A51006071DF /* Model */,
 				9CD11E99214B8A51006071DF /* View */,
 			);
 			path = Order;
@@ -1989,6 +2007,7 @@
 		9CD11E8F214B8A51006071DF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				9C6490F7219E8CD5002FE835 /* Model */,
 				9CD11E94214B8A51006071DF /* ZCCheckReportVC.h */,
 				9CD11E90214B8A51006071DF /* ZCCheckReportVC.m */,
 				9CD11E96214B8A51006071DF /* ZCOrderDetailVC.h */,
@@ -2003,20 +2022,17 @@
 				9CE34D4D214C958400F0DA65 /* ZCSearchListVC.m */,
 				9CEB2F5E214CA51500281C8E /* CPSearchResultVC.h */,
 				9CEB2F5F214CA51500281C8E /* CPSearchResultVC.m */,
+				9C6490F4219E67AB002FE835 /* ZCRejectVC.h */,
+				9C6490F5219E67AB002FE835 /* ZCRejectVC.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		9CD11E98214B8A51006071DF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9CD11E99214B8A51006071DF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9CEB2F61214CCAAA00281C8E /* CPUserSearchResultCell.h */,
+				9CEB2F62214CCAAA00281C8E /* CPUserSearchResultCell.m */,
 				9CD11E9F214B8A51006071DF /* ZCMemberOrderDetailCell.h */,
 				9CD11EA3214B8A51006071DF /* ZCMemberOrderDetailCell.m */,
 				9CD11EA4214B8A51006071DF /* ZCOrderInfoCell.h */,
@@ -2029,8 +2045,8 @@
 				9CD11E9C214B8A51006071DF /* ZCServiceDetailCell.m */,
 				9CD11EA2214B8A51006071DF /* ZCServiceListHeaderView.h */,
 				9CD11E9B214B8A51006071DF /* ZCServiceListHeaderView.m */,
-				9CEB2F61214CCAAA00281C8E /* CPUserSearchResultCell.h */,
-				9CEB2F62214CCAAA00281C8E /* CPUserSearchResultCell.m */,
+				9C6490FB219E8EF7002FE835 /* ZCRejectReasonCV.h */,
+				9C6490FC219E8EF7002FE835 /* ZCRejectReasonCV.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2071,6 +2087,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9CE5707B2163695E00176E4A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9CE5707C2163695E00176E4A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9CE5707D2163697100176E4A /* ZCDelegateConsumModel.h */,
+				9CE5707E2163697100176E4A /* ZCDelegateConsumModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9CEB2F64214D081700281C8E /* MemberMgr */ = {
 			isa = PBXGroup;
 			children = (
@@ -2100,6 +2132,8 @@
 				9CF72A5E2150D44D008525D4 /* ZCAddMemberSuccessVC.m */,
 				9CF72A662150DB75008525D4 /* ZCMemberDetailVC.h */,
 				9CF72A672150DB75008525D4 /* ZCMemberDetailVC.m */,
+				9C2C63B82175BBFC00847F84 /* ZCRegisterMemberSearchVC.h */,
+				9C2C63B92175BBFC00847F84 /* ZCRegisterMemberSearchVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2136,6 +2170,10 @@
 				9CF72A6E2150DFA7008525D4 /* ZCAccountMgrMainVC.m */,
 				9CE8DB7A215237F900FEC993 /* ZCSubAccountListVC.h */,
 				9CE8DB7B215237F900FEC993 /* ZCSubAccountListVC.m */,
+				9CC3A8272175DD2200CD5437 /* ZCCheckInMemberListVC.h */,
+				9CC3A8282175DD2200CD5437 /* ZCCheckInMemberListVC.m */,
+				9CC3A82D2175E56000CD5437 /* ZCAddMemberVC.h */,
+				9CC3A82E2175E56000CD5437 /* ZCAddMemberVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2152,6 +2190,8 @@
 			children = (
 				9CE8DB7D21523C5B00FEC993 /* ZCSubAccountCell.h */,
 				9CE8DB7E21523C5B00FEC993 /* ZCSubAccountCell.m */,
+				9CC3A82A2175E00B00CD5437 /* ZCCheckInMemberCell.h */,
+				9CC3A82B2175E00B00CD5437 /* ZCCheckInMemberCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2386,6 +2426,7 @@
 				9C11EDDF20F72B7E00B6A892 /* CPMemberReportResultModel.m in Sources */,
 				9C039E0D2064FDF500AAAA50 /* CPShippingCell.m in Sources */,
 				9C5E277020240DC6003E32E7 /* CPPostTestModel.m in Sources */,
+				9C6490F6219E67AB002FE835 /* ZCRejectVC.m in Sources */,
 				9C57B01E20E9D735006104DB /* CPMainItemCell.m in Sources */,
 				9C5E273F20240983003E32E7 /* UIColor+category.m in Sources */,
 				9C4F8EBE206F563300873192 /* CPOrderListPageModel.m in Sources */,
@@ -2420,6 +2461,7 @@
 				9CFCCE9D2057764F00A31D74 /* CPTBTestVC.m in Sources */,
 				9C30049F20EDF1C600F8C083 /* CPMemberRateListModel.m in Sources */,
 				9C039DF92064DEE700AAAA50 /* CPConfigUrlModel.m in Sources */,
+				9CC3A8292175DD2200CD5437 /* ZCCheckInMemberListVC.m in Sources */,
 				9C5E274220240983003E32E7 /* CPTextView.m in Sources */,
 				9C5E274920240983003E32E7 /* CPImageCell.m in Sources */,
 				9CEB2F79214F47F700281C8E /* ZCMemberCheckListVC.m in Sources */,
@@ -2430,6 +2472,7 @@
 				9C48557B20F5941F00D9F45E /* CPMemberOrderDetailModel.m in Sources */,
 				9C3774FC2044F99B0001B961 /* CPLabel.m in Sources */,
 				9CFA674D205902F400301056 /* CPRetrieveFlowProgressView.m in Sources */,
+				9C2C63BA2175BBFD00847F84 /* ZCRegisterMemberSearchVC.m in Sources */,
 				9C37751C204554D30001B961 /* CPShopAboutVC.m in Sources */,
 				9C039DF120648E0200AAAA50 /* CPCustomerHelpModel.m in Sources */,
 				9CE59BE120F9A056006F3139 /* CPMemberCartCell.m in Sources */,
@@ -2437,6 +2480,7 @@
 				9C5C8B6E20294A930053C50B /* CPRemittanceInfoTBVC.m in Sources */,
 				9C5E274320240983003E32E7 /* CPPickerCell.m in Sources */,
 				9C30049C20EDE59400F8C083 /* CPImageTitleUpDownCell.m in Sources */,
+				9C6490FD219E8EF7002FE835 /* ZCRejectReasonCV.m in Sources */,
 				9CEB2F70214D0CB600281C8E /* ZCMemberListCell.m in Sources */,
 				9CD11E8C214B88EE006071DF /* ZCTableViewHeaderFooterView.m in Sources */,
 				9CF72A5F2150D44D008525D4 /* ZCAddMemberSuccessVC.m in Sources */,
@@ -2481,6 +2525,7 @@
 				9C37752B204586340001B961 /* CPRemittanceAccountListVC.m in Sources */,
 				9C16EAC5204D2781007BE6FE /* CPRegistParam.m in Sources */,
 				9C56A1A02043A840009838B8 /* CPSearchVC.m in Sources */,
+				9CC3A82F2175E56000CD5437 /* ZCAddMemberVC.m in Sources */,
 				9C1A1F8F2047975300CA23C8 /* CPOrderCell.m in Sources */,
 				9C1A1F922047CB6C00CA23C8 /* CPHomeLeftBarItem.m in Sources */,
 				9C37752520457E2E0001B961 /* CPModifyShopInfoVC.m in Sources */,
@@ -2500,6 +2545,7 @@
 				9C3004A220EE0FD600F8C083 /* CPMemberUpdateBankInfoVC.m in Sources */,
 				9C57B02D20EA1B2C006104DB /* CPMemberOrderDetailFooter.m in Sources */,
 				9C30049920EDCC6100F8C083 /* CPRecycleQuotePriceModel.m in Sources */,
+				9CC3A82C2175E00B00CD5437 /* ZCCheckInMemberCell.m in Sources */,
 				9C377502204505610001B961 /* CPSelectCell.m in Sources */,
 				9C1A1F9B2048F17800CA23C8 /* CPIDIV.m in Sources */,
 				9CFA675120590D7200301056 /* CPRetrieveAppearanceCell.m in Sources */,
@@ -2558,6 +2604,7 @@
 				9C167F7E204925E90017A525 /* CPUserInfoModel.m in Sources */,
 				9C5E277720243925003E32E7 /* UIImage+Category.m in Sources */,
 				9C5E274020240983003E32E7 /* CPBaseModel.m in Sources */,
+				9CE5707F2163697100176E4A /* ZCDelegateConsumModel.m in Sources */,
 				9CEB2F63214CCAAA00281C8E /* CPUserSearchResultCell.m in Sources */,
 				9C5E274420240983003E32E7 /* CPPickerView.m in Sources */,
 				9CCE3787204673AC00DBF147 /* CPOrderCountHeader.m in Sources */,
@@ -2597,6 +2644,7 @@
 				9CEB2F60214CA51500281C8E /* CPSearchResultVC.m in Sources */,
 				9C2DE68E205B529F005C0F26 /* CPFlowModel.m in Sources */,
 				9C30049620EDC9E100F8C083 /* CPRecycleQuotePriceVC.m in Sources */,
+				9C6490FA219E8CE3002FE835 /* MSRejectReasonModel.m in Sources */,
 				9C039DFD2064ED2600AAAA50 /* CPShopShippingResultModel.m in Sources */,
 				9C57B07820ECBD25006104DB /* CPMemberInfoEditCell.m in Sources */,
 				9C4F8EC3206F5DAB00873192 /* CPAssistantOrderListPageModel.m in Sources */,
@@ -3041,7 +3089,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6C42F4665;
+				DEVELOPMENT_TEAM = D6MY97ZPTP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3058,7 +3106,7 @@
 				INFOPLIST_FILE = PhoneRetrieve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.MemberManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.Delegate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3075,7 +3123,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q6C42F4665;
+				DEVELOPMENT_TEAM = D6MY97ZPTP;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3092,7 +3140,7 @@
 				INFOPLIST_FILE = PhoneRetrieve/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.MemberManager;
+				PRODUCT_BUNDLE_IDENTIFIER = com.oddPlot.Delegate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

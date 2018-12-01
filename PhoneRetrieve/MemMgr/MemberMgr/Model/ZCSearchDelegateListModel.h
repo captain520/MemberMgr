@@ -20,7 +20,7 @@
 
 @property (nonatomic, assign) NSInteger total;
 
-@property (nonatomic, assign, readonly) NSInteger hasNoData;
+@property (nonatomic, assign, readonly) BOOL hasNoData;
 
 @end
 @interface DLData : NSObject

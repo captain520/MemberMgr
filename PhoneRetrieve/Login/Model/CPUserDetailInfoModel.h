@@ -68,5 +68,7 @@
 
 @property (nonatomic, copy) NSString *default_pgprice_pre;
 
+@property (nonatomic, assign) CGFloat totalcommission;
+
 @end
 

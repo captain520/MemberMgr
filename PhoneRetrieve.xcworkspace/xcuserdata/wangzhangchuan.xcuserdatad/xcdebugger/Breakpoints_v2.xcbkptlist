@@ -52,7 +52,7 @@
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberMgr/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "559970790.355999"
+                  timestampString = "565318906.8736089"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
@@ -67,60 +67,12 @@
                   moduleName = "PhoneRetrieve"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberMgr/PhoneRetrieve/Memeber/Model/CPQuoteManager.h"
-                  timestampString = "559970790.358898"
+                  timestampString = "565318906.875654"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
                   offsetFromSymbolStart = "35">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PhoneRetrieve/MemMgr/MemberMgr/Controller/ZCMemberDetailVC.m"
-            timestampString = "559971233.785621"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "-setupUI:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ZCMemberDetailVC setupUI:]"
-                  moduleName = "PhoneRetrieve"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberMgr/PhoneRetrieve/MemMgr/MemberMgr/Controller/ZCMemberDetailVC.m"
-                  timestampString = "559970951.618353"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "718">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ZCMemberDetailVC setupUI:]"
-                  moduleName = "InjectionBundle"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/wangzhangchuan/Documents/GitHub/MemberMgr/PhoneRetrieve/MemMgr/MemberMgr/Controller/ZCMemberDetailVC.m"
-                  timestampString = "559970992.3107049"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "718">
                </Location>
             </Locations>
          </BreakpointContent>

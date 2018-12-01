@@ -46,6 +46,8 @@
 
 - (void)setupUI {
     
+    [self setTitle:@"交易订单查询"];
+    
     self.dataTableView.mj_header = nil;
     self.dataTableView.mj_footer = nil;
     self.dataTableView.scrollEnabled = NO;

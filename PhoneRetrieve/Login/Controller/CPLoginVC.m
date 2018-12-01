@@ -177,6 +177,7 @@ typedef NS_ENUM(NSInteger, CPLoginType){
     
     
     UIButton *registBT = [UIButton new];
+    registBT.hidden = YES;
     [registBT setTitleColor:C33 forState:UIControlStateNormal];
     [registBT setAttributedTitle:[self getAttributedText:@"立即注册"] forState:UIControlStateNormal];
     [registBT addTarget:self action:@selector(push2RegisterVC) forControlEvents:UIControlEventTouchUpInside];

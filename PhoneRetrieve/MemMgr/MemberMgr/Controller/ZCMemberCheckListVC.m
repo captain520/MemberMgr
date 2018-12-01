@@ -12,6 +12,7 @@
 #import "ZCCheckFooter.h"
 #import "ZCMemberCheckVC.h"
 #import "ZCUnlockMemberVC.h"
+#import "ZCSearchDelegateListModel.h"
 
 @interface ZCMemberCheckListVC ()
 
@@ -26,14 +27,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    NSMutableArray *tempData = @[].mutableCopy;
-    for (NSInteger i = 0; i < 30; ++i) {
-        [tempData addObject:@[@"--"]];
-    }
-    
-    self.dataArray = tempData.mutableCopy;
-    
-    
+
     self.title = @"会员审核";
     
     [self setupUI];
@@ -100,20 +94,30 @@
     cell.checkBlock = ^{
         [weakSelf handleCheckBlock:indexPath];
     };
+    
+    cell.model = self.dataArray[indexPath.section][indexPath.row];
 
     return cell;
 }
 
 - (void)handleCheckBlock:(NSIndexPath *)indexPath {
     DDLogInfo(@"section:%ld",indexPath.section);
-    id vc = nil;
-    if (self.currentIndex == 0) {
-        vc = [ZCMemberCheckVC new];
+    DLData *model = self.dataArray[indexPath.section][indexPath.row];
+    
+    if (self.currentTabIndex == 0) {
+        
+
+        ZCMemberCheckVC *vc = [ZCMemberCheckVC new];
+        vc.userID = model.ID;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        
     } else if (self.currentIndex == 1) {
-        vc = [ZCUnlockMemberVC new];
+        ZCUnlockMemberVC *vc = [ZCUnlockMemberVC new];
+        vc.userID = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
     }
     
-    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -124,9 +128,50 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark - private method
+//- (void)loadData {
+//    self.dataTableView.separatorColor = CPBoardColor;
+//    [super loadData];
+//}
+//
+//#pragma mark - private method
 - (void)loadData {
-    self.dataTableView.separatorColor = CPBoardColor;
-    [super loadData];
+    
+    NSMutableDictionary *params = @{
+                                    @"currentuserid" : USER_ID,
+                                    @"typeid" : @(6),
+                                    @"currentusertypeid" : @([CPUserInfoModel shareInstance].loginModel.Typeid),
+                                    @"currentpage" : @(self.currentIndex),
+                                    @"pagesize" : @"10",
+                                    @"checkcfg" : self.currentTabIndex == 0 ? @"2" : @"3"
+                                    }.mutableCopy;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCSearchDelegateListModel modelRequestPageWith:DOMAIN_ADDRESS@"api/user/findUserPageList"
+                                         parameters:params
+                                              block:^(ZCSearchDelegateListModel *result) {
+                                                  [weakSelf handleLoadDataBlock:result];
+                                              } fail:^(CPError * _Nonnull error) {
+                                                  
+                                              }];
+    
 }
+
+- (void)handleLoadDataBlock:(ZCSearchDelegateListModel *)result {
+    
+    [self.dataTableView.mj_header endRefreshing];
+    
+    if (result.hasNoData) {
+        [self.dataTableView.mj_footer endRefreshingWithNoMoreData];
+    } else {
+        [self.dataTableView.mj_footer endRefreshing];
+    }
+
+    if (result.data && [result.data isKindOfClass:[NSArray class]]) {
+        self.dataArray = @[result.data].mutableCopy;
+        [self.dataTableView reloadData];
+    }
+}
+
 
 @end

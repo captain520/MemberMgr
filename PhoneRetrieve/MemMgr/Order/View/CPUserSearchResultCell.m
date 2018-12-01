@@ -66,6 +66,7 @@
     
     nameLB.text = [NSString stringWithFormat:@"%@/%@",model.linkname,model.phone];
     chargeNameLB.text = [NSString stringWithFormat:@"(负责人:%@)",model.prelinkname];
+    chargeNameLB.hidden = model.prelinkname.length == 0;
 }
 
 @end

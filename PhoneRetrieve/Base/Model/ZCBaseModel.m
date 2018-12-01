@@ -31,6 +31,11 @@ MJExtensionCodingImplementation
                    block:(void (^)(id result))successBlock
                     fail:(void (^)(CPError *error))failBlock {
     
+    NSMutableDictionary *params = parameters.mutableCopy;
+    if (![parameters.allKeys containsObject:@"provinceid"]) {
+        [params setObject:@([CPUserInfoModel shareInstance].userDetaiInfoModel.provinceid) forKey:@"provinceid"];
+    }
+    
     [[CPProgress Instance] showLoading:[UIApplication sharedApplication].keyWindow message:nil];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -38,7 +43,7 @@ MJExtensionCodingImplementation
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -115,6 +120,11 @@ MJExtensionCodingImplementation
                        block:(void (^)(id result))successBlock
                         fail:(void (^)(CPError *error))failBlock {
     
+    NSMutableDictionary *params = parameters.mutableCopy;
+    if (![parameters.allKeys containsObject:@"provinceid"]) {
+        [params setObject:@([CPUserInfoModel shareInstance].userDetaiInfoModel.provinceid) forKey:@"provinceid"];
+    }
+
     [[CPProgress Instance] showLoading:[UIApplication sharedApplication].keyWindow message:nil];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -122,7 +132,7 @@ MJExtensionCodingImplementation
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         

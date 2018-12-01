@@ -23,12 +23,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self setTitle:@"账户管理"];
+
     self.dataArray = @[
                        @[
-                           @"代理名称：",
-                           @"代理编号:",
-                           @"手机号码:",
-                           @"邮箱:",
+                          [NSString stringWithFormat:@"代理名称：%@",[CPUserInfoModel shareInstance].userDetaiInfoModel.linkname],
+                           [NSString stringWithFormat:@"代理编号: %@",[CPUserInfoModel shareInstance].userDetaiInfoModel.cpcode],
+                           [NSString stringWithFormat:@"手机号码: %@",[CPUserInfoModel shareInstance].userDetaiInfoModel.phone],
+                           [NSString stringWithFormat:@"邮箱: %@",[CPUserInfoModel shareInstance].userDetaiInfoModel.email],
                          ],
                        @[
                            @"登录密码",

@@ -8,6 +8,7 @@
 
 #import "ZCSearchVC.h"
 #import "ZCDatePickerTF.h"
+#import "ZCDelegateConsumModel.h"
 
 @interface ZCSearchVC ()
 
@@ -20,6 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self setTitle:@"服务费查询"];
     
     [self setupUI];
 }
@@ -85,6 +87,43 @@
 
 - (void)searchAction {
     [self.view endEditing:YES];
+    
+    [self loadData];
+}
+
+- (void)loadData {
+    
+    NSMutableDictionary *params = @{
+                                    @"agentid" : USER_ID,
+                                    @"starttime" : self.beginDateTF.text,
+                                    @"endtime" : self.endDateTF.text,
+                                    @"currentpage" : @(1),
+                                    @"pagesize" : @"100",
+                                    }.mutableCopy;
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCDelegateConsumModel modelRequestPageWith:DOMAIN_ADDRESS@"/api/Reportresultcommision/findPageList"
+                                     parameters:params
+                                          block:^(id  _Nonnull result) {
+                                              [weakSelf handleLoadDataSuccessBlock:result];
+                                          } fail:^(CPError * _Nonnull error) {
+                                              
+                                          }];
+}
+
+- (void)handleLoadDataSuccessBlock:(ZCDelegateConsumModel *)result {
+    
+    if (!result || ![result.data isKindOfClass:[NSArray class]] || result.data.count == 0) {
+        
+        [self.view makeToast:@"未获取到数据" duration:2.0f position:CSToastPositionCenter];
+
+        return;
+    }
+    
+    !self.loadDataBlock ? : self.loadDataBlock(result);
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

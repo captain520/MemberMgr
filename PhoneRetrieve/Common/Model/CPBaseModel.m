@@ -30,6 +30,11 @@
                    block:(void (^)(id result))successBlock
                     fail:(void (^)(CPError *error))failBlock {
     
+    NSMutableDictionary *params = parameters.mutableCopy;
+    if (![parameters.allKeys containsObject:@"provinceid"]) {
+        [params setObject:@([CPUserInfoModel shareInstance].userDetaiInfoModel.provinceid) forKey:@"provinceid"];
+    }
+    
     [[CPProgress Instance] showLoading:[UIApplication sharedApplication].keyWindow message:nil];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -37,7 +42,7 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -114,6 +119,11 @@
                    block:(void (^)(id result))successBlock
                     fail:(void (^)(CPError *error))failBlock {
     
+    NSMutableDictionary *params = parameters.mutableCopy;
+    if (![parameters.allKeys containsObject:@"provinceid"]) {
+        [params setObject:@([CPUserInfoModel shareInstance].userDetaiInfoModel.provinceid) forKey:@"provinceid"];
+    }
+    
     [[CPProgress Instance] showLoading:[UIApplication sharedApplication].keyWindow message:nil];
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -121,7 +131,7 @@
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
-    [manager GET:url parameters:parameters progress:^(NSProgress * _Nonnull downloadProgress) {
+    [manager GET:url parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
@@ -197,6 +207,7 @@
               parameters:(NSDictionary *)parameter
                    block:(void (^)(id result))successBlock
                     fail:(void (^)(NSError *error))failBlock {
+
 
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameter options:0 error:nil];
     NSString *jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];

@@ -12,10 +12,13 @@
 #import "ZCMemeberSearchVC.h"
 #import "ZCMemberDetailVC.h"
 #import "ZCSearchDelegateListModel.h"
+#import "ZCRegisterMemberSearchVC.h"
 
 @interface ZCMemberListVC ()
 
 @property (nonatomic, strong) ZCSearchDelegateListModel *model;
+@property (nonatomic, strong) UIBarButtonItem *searchItem, *selectAllItem;
+@property (nonatomic, strong) NSArray <NSIndexPath *> *selectIndexPaths;
 
 @end
 
@@ -25,17 +28,76 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
-    UIBarButtonItem *searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
+    self.searchItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"search"] style:UIBarButtonItemStylePlain target:self action:@selector(searchAction:)];
+    self.selectAllItem = [[UIBarButtonItem alloc] initWithTitle:@"全选" style:UIBarButtonItemStyleDone target:self action:@selector(selectAllCell:)];
 
-    self.navigationItem.rightBarButtonItems = @[self.editButtonItem, searchItem];
+    [self.editButtonItem setTitle:@"分配"];
+    self.navigationItem.rightBarButtonItems = @[self.editButtonItem, self.searchItem];
     
-    [self loadData];
+    [self setTitle:@"已注册会员信息"];
+    
+    [self loadData:nil];
+}
+
+
+- (void)selectAllCell:(id)sender {
+    NSArray *firstArray = self.dataArray.firstObject;
+    [firstArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.dataTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:idx inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    }];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     
+    self.editButtonItem.title = editing ? @"确定" : @"分配";
+    if (editing) {
+        self.navigationItem.rightBarButtonItems = @[self.editButtonItem,self.selectAllItem];
+    } else {
+        self.navigationItem.rightBarButtonItems = @[self.editButtonItem, self.searchItem];
+
+        
+        if (self.dataTableView.indexPathsForSelectedRows.count > 0) {
+            
+            self.selectIndexPaths = self.dataTableView.indexPathsForSelectedRows;
+            
+            __weak typeof(self) weakSelf = self;
+            
+            ZCMemeberSearchVC *vc = [ZCMemeberSearchVC new];
+            vc.selectModel = ^(DLData *model) {
+                [weakSelf handleAllocActionBlock:model];
+            };
+            
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+    }
+
     [self.dataTableView setEditing:editing animated:YES];
+}
+
+- (void)handleAllocActionBlock:(DLData *)model {
+    
+    NSMutableArray *tempArray = @[].mutableCopy;
+    
+    [self.selectIndexPaths enumerateObjectsUsingBlock:^(NSIndexPath * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        DLData *tempModel = self.dataArray[obj.section][obj.row];
+        [tempArray addObject:@(tempModel.ID)];
+    }];
+    
+    NSString *ids = [tempArray componentsJoinedByString:@","];
+    
+    NSDictionary *params = @{
+                             @"userids" : ids,
+                             @"belonguserid" : @(model.ID)
+                             };
+    
+    [CPBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/updateBelongChildAgent"
+                       parameters:params
+                            block:^(id result) {
+                                
+                            } fail:^(CPError *error) {
+                                
+                            }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,8 +134,16 @@
     return cell;
 }
 
-cccc
-    return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView.isEditing) {
+        return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
+    } else {
+        return UITableViewCellEditingStyleDelete;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -91,7 +161,7 @@ cccc
     DDLogInfo(@"%@",tableView.indexPathsForSelectedRows);
 }
 #pragma mark - private method
-- (void)loadData {
+- (void)loadData:(DLData *)filterModel {
     
     NSMutableDictionary *params = @{
                                     @"currentuserid" : USER_ID,
@@ -99,11 +169,17 @@ cccc
                                     @"currentusertypeid" : @([CPUserInfoModel shareInstance].loginModel.Typeid),
                                     @"currentpage" : @(self.currentIndex),
                                     @"pagesize" : @"10",
+//                                    @"checkcfg" : @"1",
                                     }.mutableCopy;
     
     __weak typeof(self) weakSelf = self;
+    if (filterModel) {
+        [params setObject:filterModel.phone forKey:@"phone"];
+        [params setObject:filterModel.linkname forKey:@"linkname"];
+        [params setObject:@(1) forKey:@"currentpage"];
+    }
 
-    [ZCSearchDelegateListModel modelRequestPageWith:DOMAIN_ADDRESS@"api/user/findUserPageList/findUserPageList"
+    [ZCSearchDelegateListModel modelRequestPageWith:DOMAIN_ADDRESS@"api/user/findUserPageList"
                                          parameters:params
                                               block:^(ZCSearchDelegateListModel *result) {
                                                   [weakSelf handleLoadDataBlock:result];
@@ -130,10 +206,18 @@ cccc
 
 - (void)searchAction:(id)sender {
     
-    ZCMemeberSearchVC *searchVC = [ZCMemeberSearchVC new];
-    //    ZCSearchListVC *searchVC = [ZCSearchListVC new];
+    __weak typeof(self) weakSelf = self;
+    ZCRegisterMemberSearchVC *searchVC = [ZCRegisterMemberSearchVC new];
+    searchVC.selectModel = ^(DLData *model) {
+        DDLogInfo(@"");
+        [weakSelf handleSearchResult:model];
+    };
     
     [self.navigationController pushViewController:searchVC animated:YES];
+}
+
+- (void)handleSearchResult:(DLData *)data {
+    [self loadData:data];
 }
 
 @end

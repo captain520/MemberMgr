@@ -11,8 +11,12 @@
 
 @interface CPMemberOrderDetailFooter : CPHeaderFooter
 
-@property (nonatomic, copy) void (^checkReportAction)(void);
 
 @property (nonatomic, strong) CPMemberOrderDetailModel *model;
+
+@property (nonatomic, copy) void (^checkReportAction)(void);
+@property (nonatomic, copy) void (^agreeActionBlock)(void);
+@property (nonatomic, copy) void (^rejectActionBlock)(void);
+@property (nonatomic, copy) void (^offLineActionBlock)(void);
 
 @end

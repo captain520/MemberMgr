@@ -10,4 +10,7 @@
 
 @interface ZCUnlockMemberVC : ZCRefreshTableVC
 
+@property (nonatomic, assign) NSInteger userID;
+
+
 @end

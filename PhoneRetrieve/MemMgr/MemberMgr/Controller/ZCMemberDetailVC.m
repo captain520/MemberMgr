@@ -206,7 +206,7 @@
     
     {
         self.bankOwnerLB = [CPLabel new];
-        self.bankOwnerLB.text = [NSString stringWithFormat:@"收款人名称：%@",self.model.oldbankinfo.bname];
+        self.bankOwnerLB.text = [NSString stringWithFormat:@"收款人名称：%@",self.model.bname];
         
         [cell.contentView addSubview:self.bankOwnerLB];
         [self.bankOwnerLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -215,7 +215,7 @@
         }];
         
         self.bankNumberLB = [CPLabel new];
-        self.bankNumberLB.text = [NSString stringWithFormat:@"银行卡号：%@",self.model.oldbankinfo.banknum];
+        self.bankNumberLB.text = [NSString stringWithFormat:@"银行卡号：%@",self.model.banknum];
         
         [cell.contentView addSubview:self.bankNumberLB];
         [self.bankNumberLB mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -7,7 +7,10 @@
 //
 
 #import "ZCTableViewCell.h"
+#import "ZCDelegateConsumModel.h"
 
 @interface ZCServiceDetailCell : ZCTableViewCell
+
+@property (nonatomic, strong) DelegateFeeData *model;
 
 @end

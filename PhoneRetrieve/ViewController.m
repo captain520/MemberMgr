@@ -15,11 +15,14 @@
 #import "CPLoginVC.h"
 #import "ZCMemberMgrMainVC.h"
 #import "ZCAccountMgrMainVC.h"
+#import "CPHomeAdvModel.h"
+#import "CPWebVC.h"
 
 @interface ViewController ()<SDCycleScrollViewDelegate>
 
 @property (nonatomic, strong) SDCycleScrollView *adSV;
 @property (nonatomic, strong) UILabel *amountLB;
+@property (nonatomic, strong) NSArray <CPHomeAdvModel *> *advModels;
 
 @end
 
@@ -29,15 +32,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.title = @"主页";
-
-    self.adSV.imageURLStringsGroup = @[
-                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
-                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
-                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
-                                   ];
+//    self.adSV.imageURLStringsGroup = @[
+//                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
+//                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
+//                                      @"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2415197339,1350863646&fm=26&gp=0.jpg",
+//                                   ];
     
     [self setupUI];
+    [self loadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    NSString *value = [NSString stringWithFormat:@"¥%.2f",[CPUserInfoModel shareInstance].userDetaiInfoModel.totalcommission];
+    NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:@"服务费余额:" attributes:nil];
+    NSAttributedString *attr0 = [[NSAttributedString alloc] initWithString:value attributes:@{NSForegroundColorAttributeName : UIColor.redColor}];
+    [attr appendAttributedString:attr0];
+    
+    self.amountLB.attributedText = attr;
+    
+    self.title = [NSString stringWithFormat:@"代理编码：%@",([CPUserInfoModel shareInstance].userDetaiInfoModel.cpcode)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,7 +152,7 @@
     ZCMainActionButton *orderBt = [ZCMainActionButton new];
     
     [functionListView addSubview:orderBt];
-    [orderBt setTitle:@"我的订单" andImage:@"我的订单"];
+    [orderBt setTitle:@"订单中心" andImage:@"我的订单"];
     [orderBt addTarget:self action:@selector(pushOrderMgrPage) forControlEvents:64];
     [orderBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
@@ -147,7 +162,7 @@
     ZCMainActionButton *memeberMgrBt = [ZCMainActionButton new];
 
     [functionListView addSubview:memeberMgrBt];
-    [memeberMgrBt setTitle:@"会员管理" andImage:@"回收车"];
+    [memeberMgrBt setTitle:@"会员管理" andImage:@"手机回收"];
     [memeberMgrBt addTarget:self action:@selector(pushMemberMgrPage) forControlEvents:64];
     [memeberMgrBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(0);
@@ -160,7 +175,7 @@
     
     [functionListView addSubview:appreciationBt];
     [appreciationBt addTarget:self action:@selector(pushAppreciationPage) forControlEvents:64];
-    [appreciationBt setTitle:@"增值服务" andImage:@"回收车"];
+    [appreciationBt setTitle:@"增值服务" andImage:@"helpCenter"];
     [appreciationBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(orderBt.mas_bottom).offset(1);
         make.left.mas_equalTo(orderBt.mas_left);
@@ -172,7 +187,7 @@
     ZCMainActionButton *accountMgrBt = [ZCMainActionButton new];
     
     [functionListView addSubview:accountMgrBt];
-    [accountMgrBt setTitle:@"账号管理" andImage:@"回收车"];
+    [accountMgrBt setTitle:@"账号管理" andImage:@"今日报价"];
     [accountMgrBt addTarget:self action:@selector(pushAccountPage) forControlEvents:64];
     [accountMgrBt mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(appreciationBt.mas_top);
@@ -188,6 +203,14 @@
 #pragma mark - delete method implement
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
     DDLogInfo(@"%s",__FUNCTION__);
+    CPHomeAdvModel *model = self.advModels[index];
+    if (model.clickurl.length > 0) {
+        CPWebVC *webVC = [[CPWebVC alloc] init];
+        webVC.urlStr = model.clickurl;
+        webVC.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:webVC animated:YES];
+    }
 }
 
 #pragma mark - private method
@@ -222,5 +245,24 @@
     ZCAccountMgrMainVC *vc = [ZCAccountMgrMainVC new];
     
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+#pragma mark - private method implement
+- (void)loadData {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [CPHomeAdvModel modelRequestWith:CPURL_CONFIG_HOME_AD
+                          parameters:nil
+                               block:^(NSArray <CPHomeAdvModel *> *result) {
+                                   [weakSelf handleLoadDataBlock:result];
+                               } fail:^(CPError *error) {
+                                   
+                               }];
+}
+
+- (void)handleLoadDataBlock:(NSArray <CPHomeAdvModel *> *)result {
+    self.advModels = result;
+    self.adSV.imageURLStringsGroup = [result valueForKeyPath:@"imageurl"];
 }
 @end

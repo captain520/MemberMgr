@@ -12,8 +12,12 @@
 #import "CPWebVC.h"
 #import "ZCMemeberSearchVC.h"
 #import "ZCAddMemberSuccessVC.h"
+#import "ZCUserDetailModel.h"
 
 @interface ZCMemberCheckVC ()
+
+@property (nonatomic, strong) ZCUserDetailModel *model;
+@property (nonatomic, strong) DLData *dlModel;
 
 @property (nonatomic, strong) CPLabel *nameLB, *addressLB, *phoneLB;
 @property (nonatomic, strong) CPLabel *bankOwnerLB, *bankNumberLB, *bankNameLB;
@@ -76,7 +80,7 @@
 
     {
         self.nameLB = [CPLabel new];
-        self.nameLB.text = @"会员名称:船长";
+        self.nameLB.text = [NSString stringWithFormat:@"会员名称:%@",self.model.linkname];
         
         [cell.contentView addSubview:self.nameLB];
         [self.nameLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -85,7 +89,7 @@
         }];
         
         self.addressLB = [CPLabel new];
-        self.addressLB.text = @"会员地址:船长街道办";
+        self.addressLB.text = [NSString stringWithFormat:@"会员地址:%@",self.model.address];
         
         [cell.contentView addSubview:self.addressLB];
         [self.addressLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -94,7 +98,7 @@
         }];
         
         self.phoneLB = [CPLabel new];
-        self.phoneLB.text = @"会员电话:15814099327";
+        self.phoneLB.text = [NSString stringWithFormat:@"会员电话:%@",self.model.phone];
         
         [cell.contentView addSubview:self.phoneLB];
         [self.phoneLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -120,6 +124,10 @@
         self.licenseIV.layer.borderColor = CPBoardColor.CGColor;
         self.licenseIV.image = [UIImage imageNamed:@"placeHolderImage"];
         
+        if (self.model.licenseurl && self.model.licenseurl.length > 10) {
+            [self.licenseIV sd_setImageWithURL:CPUrl(self.model.licenseurl) placeholderImage:nil];
+        }
+        
         [cell.contentView addSubview:self.licenseIV];
         [self.licenseIV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(licenseHintLB.mas_bottom);
@@ -144,6 +152,11 @@
         self.IDFrontIV.layer.borderColor = CPBoardColor.CGColor;
         self.IDFrontIV.image = [UIImage imageNamed:@"placeHolderImage"];
         
+        if (self.model.idcard1url && self.model.idcard1url.length > 10) {
+            [self.IDFrontIV sd_setImageWithURL:CPUrl(self.model.idcard1url)];
+        }
+        
+        
         [cell.contentView addSubview:self.IDFrontIV];
         [self.IDFrontIV mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(IDHintLB.mas_bottom);
@@ -156,6 +169,9 @@
         self.IDBackIV.layer.borderWidth = 1.0f;
         self.IDBackIV.layer.borderColor = CPBoardColor.CGColor;
         self.IDBackIV.image = [UIImage imageNamed:@"placeHolderImage"];
+        if (self.model.idcard2url && self.model.idcard2url.length > 10) {
+            [self.IDBackIV sd_setImageWithURL:CPUrl(self.model.idcard2url)];
+        }
         
         [cell.contentView addSubview:self.IDBackIV];
         [self.IDBackIV mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -208,7 +224,7 @@
     
     {
         self.bankOwnerLB = [CPLabel new];
-        self.bankOwnerLB.text = @"收款人名称：xxxxx";
+        self.bankOwnerLB.text = [NSString stringWithFormat:@"收款人名称：%@",self.model.bname];
         
         [cell.contentView addSubview:self.bankOwnerLB];
         [self.bankOwnerLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -217,7 +233,7 @@
         }];
         
         self.bankNumberLB = [CPLabel new];
-        self.bankNumberLB.text = @"银行卡号：xxxxx";
+        self.bankNumberLB.text = [NSString stringWithFormat:@"银行卡号：%@",self.model.banknum];
         
         [cell.contentView addSubview:self.bankNumberLB];
         [self.bankNumberLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -226,7 +242,7 @@
         }];
         
         self.bankNameLB = [CPLabel new];
-        self.bankNameLB.text = @"银行名称：xxxxx";
+        self.bankNameLB.text = [NSString stringWithFormat:@"银行名称：%@",self.model.oldbankinfo.bankname];
         
         [cell.contentView addSubview:self.bankNameLB];
         [self.bankNameLB mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -262,7 +278,7 @@
     }
     
     
-    if (nil == self.checkBox) {
+    {
         
         NSDictionary *option0 = @{
                                   NSFontAttributeName : [UIFont systemFontOfSize:13.0f],
@@ -300,7 +316,7 @@
         };
         
         [cell.contentView addSubview:self.checkBox];
-        
+
         [self.checkBox mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.subMemberTF.mas_bottom).offset(cellSpaceOffset);
             make.left.mas_equalTo(cellSpaceOffset);
@@ -314,6 +330,7 @@
         
         [cell.contentView addSubview:self.actionButton];
         [self.actionButton setTitle:@"审核通过" forState:0];
+        [self.actionButton addTarget:self action:@selector(checkPassActino:) forControlEvents:64];
         [self.actionButton mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.mas_equalTo(self.checkBox.mas_bottom).offset(2 * SPACE_OFFSET_F);
             make.left.mas_equalTo(SPACE_OFFSET_F);
@@ -345,6 +362,10 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
+    [cell.contentView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [obj removeFromSuperview];
+    }];
+    
     [self setupUI:cell];
 
     return cell;
@@ -363,9 +384,69 @@
 
 - (void)alloctAction:(id)sender {
     
+    __weak typeof(self) weakSelf = self;
+    
     ZCMemeberSearchVC *vc = [ZCMemeberSearchVC new];
+    vc.selectModel = ^(DLData *model) {
+        [weakSelf handleAllocActionBlock:model];
+    };
 
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)handleAllocActionBlock:(DLData *)model {
+    self.subMemberTF.text = model.linkname;
+    self.dlModel = model;
+    
+    self.actionButton.enabled = (
+                                 self.subMemberTF.text.length > 0 &&
+                                 self.agreeProtocol == YES
+                                 );
+}
+
+- (void)loadData {
+    NSDictionary *params = @{
+                             //                             @"userid" : USER_ID
+                             @"userid" : @(self.userID)
+                             };
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCUserDetailModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/getUserModelDetail"
+                             parameters:params
+                                  block:^(id  _Nonnull result) {
+                                      [weakSelf handleLoadDataSuccussBlock:result];
+                                  } fail:^(CPError * _Nonnull error) {
+                                      
+                                  }];
+}
+
+- (void)handleLoadDataSuccussBlock:(ZCUserDetailModel *)result {
+    self.model = result;
+    [self.dataTableView reloadData];
+}
+
+- (void)checkPassAction:(id)sender {
+    
+    NSMutableDictionary *params = @{
+                             @"userid" : USER_ID,
+                             @"operatorid" : @(self.model.ID)
+                             }.mutableCopy;
+    if (self.model.typeid == 9) {
+        [params setObject:@(self.model.ID) forKey:@"belonguserid"];
+    } else if (self.model.typeid == 8) {
+        [params setObject:@(self.dlModel.ID) forKey:@"belonguserid"];
+    }
+
+    __weak typeof(self) weakSelf = self;
+    
+    [ZCBaseModel modelRequestWith:DOMAIN_ADDRESS@"/api/user/updateUserCheckcfg"
+                       parameters:params
+                            block:^(id  _Nonnull result) {
+                                [weakSelf.view makeToast:@"深圳成功" duration:2.0f position:CSToastPositionCenter];
+                            } fail:^(CPError * _Nonnull error) {
+                                
+                            }];
 }
 
 

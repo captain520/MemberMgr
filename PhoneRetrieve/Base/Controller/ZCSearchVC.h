@@ -10,4 +10,6 @@
 
 @interface ZCSearchVC : ZCBaseVC
 
+@property (nonatomic,strong) void (^loadDataBlock)(id data);
+
 @end

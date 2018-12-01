@@ -1,2 +1,2 @@
-/Users/wangzhangchuan/Library/Developer/Xcode/DerivedData/PhoneRetrieve-brhjbimtuiawrtgimkgybrbnxejm/Build/Products/Debug-iphonesimulator/PhoneRetrieve.app
+/Users/wangzhangchuan/Library/Developer/Xcode/DerivedData/PhoneRetrieve-avlitryddjtxvfetbasrjvzmtdzb/Build/Products/Debug-iphonesimulator/PhoneRetrieve.app
 iPhone Developer
